@@ -1,0 +1,55 @@
+
+    <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      
+      <a class="navbar-brand" href="#"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/#!/registro">Registro</a></li>
+        <li><a href="/#!/propiedades">Propiedades</a></li>
+        
+      </ul>
+      <div class="row">
+          <input id="filter" class="pull-left" type="search" name="nameFilter" ng-model="vm.filtro" placeholder="Buscar">
+          <button type="button" class="add-project pull-right" data-toggle="modal" data-target="#add_project">Agregar jugador</button>
+      </div>
+
+    </div><!-- /.navbar-collapse -->
+  </nav>
+    
+
+<div ng-repeat="propiedad in vm.propiedades" class="col-lg-4 col-md-4">
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="">
+        <div class="">
+          <span class="x-icon-headings-invert icon-x-order x-icon-headings"></span>
+          <h3 class="header-white header-smaller">{{propiedad.name}}</h3>
+        </div>
+        <div class="">
+          <div class="huge">{{propiedad.id}}</div>
+        </div>
+      </div>
+    </div>
+    <a>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-5 col-lg-4 clearfix dashboard-leads-indicator">
+            <label type="text" name="posistion" id="posistion">{{propiedad.posistion}}</label>
+          </div>
+          <div class="col-md-2 col-lg-4 clearfix dashboard-progress-bar">
+            <div class="col-md-5 col-lg-4 clearfix dashboard-leads-indicator">
+            <label type="text" name="price" id="price">{{propiedad.price}}</label>
+          </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </a>
+
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{
+		"name": "examen-2",
+		"version": "1.0.0",
+		"description": "",
+		"main": "api/server.js",
+		"scripts": {
+				"test": "echo \"Error: no test specified\" && exit 1"
+		},
+		"author": "keiandreaorozcoc@gmail.com",
+		"license": "ISC",
+		"dependencies": {
+				"body-parser": "^1.13.3",
+				"express": "^4.13.3",
+				"gulp": "^3.9.1",
+				"gulp-connect": "^5.0.0",
+				"gulp-nodemon": "^2.2.1",
+				"mongoose": "^4.11.5",
+				"morgan": "~1.5.0",
+				"nib": "^1.1.2"
+		}
+}
