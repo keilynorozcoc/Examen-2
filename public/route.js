@@ -46,7 +46,7 @@
                 controllerAs: 'vm'
             })
 
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/registro');
     } //Cierre de la function configuration
 
 })();
