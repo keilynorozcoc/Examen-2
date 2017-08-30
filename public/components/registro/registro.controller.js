@@ -3,20 +3,41 @@
   angular
     .module('myApp')
     .controller('registroController', registroController);
-    registroController.$inject = ['$http','jugadoresService','Upload','ImageService'];
-    function registroController(jugadoresService,Upload,ImageService){
+    registroController.$inject = ['$http','jugadorService','Upload','filepickerService','ImageService'];
+    function registroController($http,jugadorService,Upload,filepickerService,ImageService){
 
       var vm = this;
         vm.jugador = {};
+        vm.nuevoJugador = false;
         vm.cloudObj = ImageService.getConfiguration();
-
+        
       function init(){
-        vm.jugadores = jugadoresService.getJugadores();
+        jugadorService.getJugadores().then(function (response) {
+         vm.jugadores = response.data;
+
+        });
         vm.jugador = {}
       }
-        init();
 
-        vm.presave= function(update) {
+      init();
+
+      vm.pickFile = function(){
+        filepickerService.pick(
+          {extension: '.pdf',
+            language: 'es',
+            container: 'modal',
+            services: ['COMPUTER']
+          },
+          onSuccess
+        );
+      };
+
+      function onSuccess(Blob){
+        vm.jugador.file = Blob.url;
+        vm.fileName = Blob.filename;
+      };      
+
+      vm.presave= function(update) {
         console.log('presave')
 
         vm.cloudObj.data.file =document.getElementById("foto").files[0];
@@ -37,32 +58,26 @@
           }
            );
 
-
-          ; 
-
         // }
-        vm.loading = false;       
+        vm.loading = false; 
       }
 
-        vm.save = function(){
-            console.log('save')
-            jugadoresService.setJugador(vm.jugador);
-            init();
-        }
+      vm.save = function(){
+        console.log('save')
+        jugadorService.setJugador(vm.jugador);
+        init();
+      }
 
-        vm.update = function(){
-            console.log('update')
-            jugadoresService.updateJugador(vm.jugador);
+      vm.update = function(){
+        console.log('update')
+        jugadorService.updateJugador(vm.jugador);
 
         init();
       }
+
       vm.getInfo = function(pJugador){
         console.log('getInfo')
         vm.jugador = pJugador;
-      }
-
-      function clean(){
-        vm.jugadores = {}
       }
 
     }

@@ -23,10 +23,10 @@ db.on('open', function(){
 // recarga los metodoss
 
 // Por medio de express se genera la conexión entre el index.js, server.js y el front-end
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 
 
@@ -53,10 +53,11 @@ var index = require('./index');
 
 
 // Se definen las rutas de los servicios con las que se conecta el front-end
-app.use('/', index);
+
 app.use('/api', jugadorRoutes);
 app.use('/api', propiedadRoutes);
 
+app.use('/', index);
 // Se guarda todo lo que se ha realizado
 module.exports = app;
 

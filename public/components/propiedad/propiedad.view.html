@@ -1,26 +1,26 @@
-
-    <nav class="navbar navbar-default" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
     <div class="navbar-header">
-      
-      <a class="navbar-brand" href="#"></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/#!/registro">Registro</a></li>
-        <li><a href="/#!/propiedades">Propiedades</a></li>
-        
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><a href="/#!/registro">Registro</a></li>
+        <li><a href="/#!/propiedad">Propiedades</a></li>
       </ul>
-      <div class="row">
-          <input id="filter" class="pull-left" type="search" name="nameFilter" ng-model="vm.filtro" placeholder="Buscar">
-          <button type="button" class="add-project pull-right" data-toggle="modal" data-target="#add_project">Agregar jugador</button>
-      </div>
-
-    </div><!-- /.navbar-collapse -->
-  </nav>
-    
+      <form class="navbar-form navbar-right">
+        <input id="filter" class="form-control" type="search" name="nameFilter" ng-model="vm.filtro" placeholder="Buscar">
+        <!-- <input type="text" class="form-control" placeholder="Search..."> -->
+      </form>
+    </div>
+  </div>
+</nav>
 
 <div ng-repeat="propiedad in vm.propiedades" class="col-lg-4 col-md-4">
     <div class="panel panel-primary">
@@ -44,6 +44,8 @@
           <div class="col-md-2 col-lg-4 clearfix dashboard-progress-bar">
             <div class="col-md-5 col-lg-4 clearfix dashboard-leads-indicator">
             <label type="text" name="price" id="price">{{propiedad.price}}</label>
+            <button class="btn btn-info float-right btn-sm pull-right">Comprar</button>
+            
           </div>
           </div>
         </div>

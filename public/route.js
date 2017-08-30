@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular
-        .module('appRoutes', ['ui.router', 'oc.lazyLoad', 'ngMessages', 'angularCSS', 'ngFileUpload', 'ngPassword'])
+        .module('appRoutes', ['ui.router', 'oc.lazyLoad', 'angularCSS'])
         .config(configuration);
 
     configuration.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -13,13 +13,13 @@
                 url: '/landing',
                 templateUrl: './components/landing/landing.view.html',
                 css: './css/style.landing.css',
-                resolve: {
-                    load: ['$ocLazyLoad', function($ocLazyLoad) {
-                        return $ocLazyLoad.load('./components/landing/landing.controller.js')
-                    }]
-                },
-                controller: 'landingController',
-                controllerAs: 'vm'
+                // resolve: {
+                //     load: ['$ocLazyLoad', function($ocLazyLoad) {
+                //         return $ocLazyLoad.load('./components/landing/landing.controller.js')
+                //     }]
+                // },
+                // controller: 'landingController',
+                // controllerAs: 'vm'
             })
             .state('registro', {
                 url: '/registro',
@@ -36,7 +36,7 @@
             .state('propiedad', {
                 url: '/propiedad',
                 templateUrl: './components/propiedad/propiedad.view.html',
-                css: './css/style.propiedad.css',
+                // css: './css/style.propiedad.css',
                 resolve: {
                     load: ['$ocLazyLoad', function($ocLazyLoad) {
                         return $ocLazyLoad.load('./components/propiedad/propiedad.controller.js')

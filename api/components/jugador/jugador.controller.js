@@ -18,4 +18,14 @@ module.exports.save = function(req, res){
     }
   });
 }
+module.exports.findAll = function(req,res){
+  Jugador.find().then(function(jugadores){
+    res.send(jugadores);
+  })
+};
 
+module.exports.findOne = function(req,res){
+  Jugador.find().then(function(jugadores){
+    res.send(jugadores);
+  })
+};

@@ -1,13 +1,109 @@
-<section>
-    <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><a href="/#!/registro">Registro</a></li>
+        <li><a href="/#!/propiedad">Propiedades</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input id="filter" class="form-control" type="search" name="nameFilter" ng-model="vm.filtro" placeholder="Buscar">
+        <!-- <input type="text" class="form-control" placeholder="Search..."> -->
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row" ng-hide="vm.nuevoJugador">
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+      <div class="row">
+        <div class="col-md-4">
+          <h1 class="page-header">Jugadores</h1>
+        </div>
+        {{vm.nuevoJugador}}
+        <div class="col-md-4">
+          <button type="button" class="btn btn-warning" ng-click="vm.nuevoJugador = !vm.nuevoJugador" >Agregar jugador</button>
+        </div>         
+      </div>
+      
+     
+      <div ng-repeat="jugador in vm.jugadores" class="col-sm-6 col-md-4 col-lg-3 mt-4">
+        <div class="row placeholders">
+          <div class="col-xs-6 col-sm-3 placeholder">
+            <img ng-src="{{jugador.foto}}" alt="Description" class="profile-avatar" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"/>
+            <h4>{{jugador.nombre}}</h4>
+            <span class="text-muted">{{jugador.alias}}</span>
+            <span class="text-muted">{{jugador.codigo}}</span>
+            <span class="text-muted">{{jugador.cantDinero}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-show="vm.nuevoJugador">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="modal-header login-header">
+        <h4 class="modal-title">Información del jugador</h4>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="codigo">Código</label>
+        <input ng-model="vm.jugador.codigo" type="text" class="form-control" id="codigo" placeholder="000">
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input ng-model="vm.jugador.nombre" type="text" class="form-control" id="nombre" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="alias">Alias</label>
+        <input ng-model="vm.jugador.alias" type="text" class="form-control" id="alias" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="cantDinero">Cantidad de dinero </label>
+        <input ng-model="vm.jugador.cantDinero" type="text" class="form-control" id="cantDinero" placeholder="">
+      </div>
+
+      <div class="input-group">
+        <label class="input-group-btn">
+
+          <a><p ng-click="vm.pickFile()"  class="btn btn-primary" style="background-color: #FBB803; color: black">Seleccion&hellip;<input style="display: none;" id="cv" ng-model="vm.jugador.file" multiple>
+          </p></a>
+          
+        </label>
+        <input  ng-if="vm.loading" value="Cargando..." type="text" class="form-control" style="color: black" readonly>
+        <input  ng-if="!vm.loading" ng-model="vm.fileName" type="text" class="form-control" style="color: black" readonly>
+      </div>  
+    
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ng-click="vm.nuevoJugador = !vm.nuevoJugador">Cancelar</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="vm.presave()">Agregar</button>        
+    </div>    
+  </div>
+  </div>
+</div>
+
+<!-- 
+   <nav class="navbar navbar-default" role="navigation">
+  <! Brand and toggle get grouped for better mobile display -->
+<!--   <div class="navbar-header">
     
     <a class="navbar-brand" href="#"></a>
   </div>
-
+ -->
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<!--   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li class="active"><a href="/#!/registro">Registro</a></li>
       <li><a href="/#!/propiedades">Propiedades</a></li>
@@ -18,76 +114,27 @@
         <button type="button" class="add-project pull-right" data-toggle="modal" data-target="#add_project">Agregar jugador</button>
     </div>
 
-  </div><!-- /.navbar-collapse -->
-</nav>
-  
-    <!-- Modal -->
-
-    <div id="add_project" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header login-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Información del jugador</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="codigo">Código</label>
-                    <input ng-model="vm.jugador.codigo" type="text" class="form-control" id="codigo" placeholder="000">
-                  </div>
-                  <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input ng-model="vm.jugador.nombre" type="text" class="form-control" id="nombre" placeholder="">
-                  </div>
-                  <div class="form-group">
-                    <label for="alias">Alias</label>
-                    <input ng-model="vm.jugador.alias" type="text" class="form-control" id="alias" placeholder="">
-                  </div>
-                  <div class="form-group">
-                    <label for="cantDinero">Cantidad de dinero </label>
-                    <input ng-model="vm.jugador.cantDinero" type="text" class="form-control" id="cantDinero" placeholder="">
-                  </div>
-                  <div class="form-group">
-                    <label for="foto">Foto</label>
-                    <input ng-model="vm.jugador.foto" class="form-control" type="file" ng-model="vm.agregar.foto" name="foto" id="foto">
-                  </div>
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="cancel" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="add-project" data-dismiss="modal" ng-click="vm.presave()">Agregar</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!--info jugadores cards -->
-<!--     {{vm.jugadores}} -->
-    <div ng-repeat="jugador in vm.jugadores | filter:vm.filtro"" class="col-sm-6 col-md-4 col-lg-3 mt-4">
-        <div class="card card-inverse card-info">
-            <img class="card-img-top" style="max-height: 200px" ng-src="{{jugador.foto}}">
-            <div class="card-block">
-                <figure class="profile">
-                    <img ng-src="{{jugador.foto}}" alt="Description" class="profile-avatar"/>
-                </figure>
-                <h4 class="card-title mt-3">{{jugador.nombre}}</h4>
-                <div class="meta card-text">
-                    <a>{{jugador.alias}}</a>
-                </div>
-                <div class="card-text">
-                    {{jugador.codigo}}
-                </div>
-            </div>
-            <div class="card-footer">
-                <small>{{jugador.cantDinero}}</small>
-                <button class="btn btn-info float-right btn-sm pull-right">Comprar</button>
-            </div>
-        </div>
-    </div>
-    
-</section>
-
-
-   
+  </div> -->
+<!--         <h2 class="sub-header">Section title</h2>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,002</td>
+              <td>amet</td>
+              <td>consectetur</td>
+              <td>adipiscing</td>
+              <td>elit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->

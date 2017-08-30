@@ -14,7 +14,7 @@ router.route('/save_jugador')
     jugadorController.save(req,res);
   });
 
-router.route('/get_all')
+router.route('/get_all_jugador')
   .get(function(req,res){
     jugadorController.findAll(req,res);
   });

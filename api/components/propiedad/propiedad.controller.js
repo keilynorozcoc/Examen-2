@@ -7,18 +7,18 @@ module.exports.save = function(req, res){
     id : req.body.id,
     posistion : req.body.posistion,
     price : req.body.price,
-    rent : req.body.price,
-    multpliedrent: req.body.price,
-    housecost : req.body.price,
-    group : req.body.price,
-    ownedby : req.body.price,
-    buildings : req.body.price,
-    mortgaged : req.body.price,
-    probability : req.body.price,
-    rel : req.body.price,
-    ohousecost : req.body.price,
-    oprice :req.body.price,
-    averageProbability :req.body.price
+    rent : req.body.rent,
+    multpliedrent: req.body.multpliedrent,
+    housecost : req.body.housecost,
+    group : req.body.group,
+    ownedby : req.body.ownedby,
+    buildings : req.body.buildings,
+    mortgaged : req.body.mortgaged,
+    probability : req.body.probability,
+    rel : req.body.rel,
+    ohousecost : req.body.ohousecost,
+    oprice :req.body.oprice,
+    averageProbability :req.body.averageProbability
   });
 
   nuevoPropiedad.save(function(err){
@@ -29,4 +29,16 @@ module.exports.save = function(req, res){
     }
   });
 }
+module.exports.findAll = function(req,res){
+  Propiedad.find().then(function(propiedades){
+    res.send(propiedades);
+  })
+};
+
+module.exports.findOne = function(req,res){
+  Propiedad.find().then(function(propiedades){
+    res.send(propiedades);
+  })
+};
+
 

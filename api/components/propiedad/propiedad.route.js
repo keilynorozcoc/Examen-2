@@ -14,7 +14,7 @@ router.route('/save_propiedad')
     propiedadController.save(req,res);
   });
 
-router.route('/get_all')
+router.route('/get_all_propiedad')
   .get(function(req,res){
     propiedadController.findAll(req,res);
   });

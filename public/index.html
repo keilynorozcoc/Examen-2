@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Material -->
+    <!--     Material -->
     <!-- <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"> -->
 		<!-- font awesome -->
 		<link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css">
@@ -19,15 +19,16 @@
     <title>Examen-2</title>
   </head>
   <body>
-    <!-- <div ui-view> -->
+    <div ui-view>
 
       <!-- AngularJS -->
+      <script src="//api.filestackapi.com/filestack.js"></script>
 
       <script src="./bower_components/angular/angular.min.js"></script>
       <!-- Dependencias Generales -->
-			<!-- <script src="./bower_components/jquery/dist/jquery.min.js"></script> -->
+			<script src="./bower_components/jquery/dist/jquery.min.js"></script>
       <!-- bootstrap -->
-			<!-- <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+			<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
         <!-- Dependencias de AngularJs -->
 				<script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -38,9 +39,13 @@
         <script src="./bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
         <script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
 
+        <script src="./bower_components/angular-filepicker/dist/angular_filepicker.js"></script>
+
         <!-- Scripts de la aplicacion -->
-<!--   			<script src="./app.js"></script>
-  			<script src="./route.js"></script> -->
+  			<script src="./app.js"></script>
+  			<script src="./route.js"></script>
+
+
 
         <!-- Services de login -->
 <!--         <script src="./components/services/auth.service.js"></script>
@@ -48,9 +53,8 @@
         <script src="./components/services/user.service.js"></script> -->
 
         <!-- Servicios -->
-        <script src="./components/services/jugadores.service.js"></script>
+        <script src="./components/services/jugador.service.js"></script>
         <script src="./components/services/propiedad.service.js"></script>
-        <script src="./components/services/transaccion.service.js"></script>
         <script src="./components/services/image.service.js"></script>
 
   </body>
