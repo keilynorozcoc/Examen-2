@@ -23,7 +23,7 @@
 
       vm.pickFile = function(){
         filepickerService.pick(
-          {extension: '.pdf',
+          {extension: ['.pdf','.txt'],
             language: 'es',
             container: 'modal',
             services: ['COMPUTER']
