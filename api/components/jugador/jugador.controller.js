@@ -7,7 +7,8 @@ module.exports.save = function(req, res){
     nombre : req.body.nombre,
     alias : req.body.alias,
     cantDinero : req.body.cantDinero,
-    foto : req.body.foto
+    foto : req.body.foto,
+    archivo: req.body.archivo
   });
 
   nuevoJugador.save(function(err){
