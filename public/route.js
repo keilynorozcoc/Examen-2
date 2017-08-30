@@ -8,19 +8,6 @@
 
     function configuration($stateProvider, $urlRouterProvider) {
         $stateProvider
-            // Estado del registro PAge
-            .state('landing', {
-                url: '/landing',
-                templateUrl: './components/landing/landing.view.html',
-                css: './css/style.landing.css',
-                // resolve: {
-                //     load: ['$ocLazyLoad', function($ocLazyLoad) {
-                //         return $ocLazyLoad.load('./components/landing/landing.controller.js')
-                //     }]
-                // },
-                // controller: 'landingController',
-                // controllerAs: 'vm'
-            })
             .state('registro', {
                 url: '/registro',
                 templateUrl: './components/registro/registro.view.html',

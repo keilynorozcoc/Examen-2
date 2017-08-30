@@ -33,7 +33,7 @@
       };
 
       function onSuccess(Blob){
-        vm.jugador.file = Blob.url;
+        vm.jugador.archivo = Blob.url;
         vm.fileName = Blob.filename;
       };      
 
